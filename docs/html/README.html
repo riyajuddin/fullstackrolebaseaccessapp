@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBAC Application Documentation Index</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        
+        h1:first-child {
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+        
+        h4 {
+            color: #7f8c8d;
+            margin-top: 15px;
+        }
+        
+        code {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 3px;
+            padding: 2px 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            font-style: italic;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin: 0;
+            border: none;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            margin: 10px 0 0 0;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+        }
+        
+        .print-button:hover {
+            background-color: #2980b9;
+        }
+        
+        @media print {
+            .print-button {
+                display: none;
+            }
+            
+            body {
+                background-color: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print PDF</button>
+    
+    <div class="container">
+        <div class="header">
+            <h1>RBAC Application Documentation Index</h1>
+            <p>RBAC Application Documentation</p>
+        </div>
+        
+        <p><h1>RBAC Application Documentation</h1></p><p><h2>Overview</h2></p><p>This directory contains comprehensive documentation for the RBAC (Role-Based Access Control) application. The documentation covers all aspects of the application including architecture, components, API, deployment, and testing.</p><p><h2>Documentation Structure</h2></p><p><h3>📋 Core Documentation</h3></p><p><ul><li><strong><a href="./ARCHITECTURE.md">ARCHITECTURE.md</a></strong></li><br>   - System architecture overview<br>   - Technology stack details<br>   - Component relationships<br>   - Security architecture<br>   - Scalability considerations</p><p><li><strong><a href="./DATA_FLOW.md">DATA_FLOW.md</a></strong></li><br>   - Authentication flow diagrams<br>   - Authorization flow patterns<br>   - CRUD operations flow<br>   - State management flow<br>   - Error handling flow</p><p><li><strong><a href="./COMPONENTS.md">COMPONENTS.md</a></strong></li><br>   - Frontend component documentation<br>   - Backend module documentation<br>   - Data model specifications<br>   - Service layer documentation<br>   - Utility function documentation</p><p><li><strong><a href="./API_DOCUMENTATION.md">API_DOCUMENTATION.md</a></strong></li><br>   - Complete API endpoint reference<br>   - Request/response examples<br>   - Authentication requirements<br>   - Error codes and handling<br>   - Rate limiting information</p><p><h3>🚀 Deployment & Operations</h3></p><p><li><strong><a href="./DEPLOYMENT_GUIDE.md">DEPLOYMENT_GUIDE.md</a></strong></li><br>   - Development environment setup<br>   - Production deployment strategies<br>   - Docker containerization<br>   - Cloud platform deployment<br>   - Security configuration<br>   - Monitoring and logging</p><p><li><strong><a href="./TESTING_GUIDE.md">TESTING_GUIDE.md</a></strong></li><br>   - Testing strategy and pyramid<br>   - Unit testing examples<br>   - Integration testing<br>   - End-to-end testing<br>   - Security testing<br>   - Performance testing<br>   - Test automation</p><p><h2>Quick Start</h2></p><p><h3>For Developers</h3><br><li>Start with <a href="./ARCHITECTURE.md">ARCHITECTURE.md</a> to understand the system design</li><br><li>Review <a href="./COMPONENTS.md">COMPONENTS.md</a> for detailed component information</li><br><li>Check <a href="./API_DOCUMENTATION.md">API_DOCUMENTATION.md</a> for API usage</li><br><li>Follow <a href="./TESTING_GUIDE.md">TESTING_GUIDE.md</a> for testing implementation</li></p><p><h3>For DevOps/Deployment</h3><br><li>Begin with <a href="./DEPLOYMENT_GUIDE.md">DEPLOYMENT_GUIDE.md</a> for deployment instructions</li><br><li>Review security configurations in the deployment guide</li><br><li>Set up monitoring and logging as described</li></p><p><h3>For API Integration</h3><br><li>Start with <a href="./API_DOCUMENTATION.md">API_DOCUMENTATION.md</a></li><br><li>Review authentication flow in <a href="./DATA_FLOW.md">DATA_FLOW.md</a></li><br><li>Check error handling patterns</li></p><p><h2>Application Features</h2></p><p><h3>🔐 Authentication & Authorization</h3><br>- JWT-based authentication<br>- Role-based access control<br>- Permission-based route protection<br>- Secure password hashing</p><p><h3>👥 User Management</h3><br>- User CRUD operations<br>- Role assignment<br>- User status management<br>- Profile management</p><p><h3>🛡️ Role Management</h3><br>- Role creation and editing<br>- Permission assignment<br>- Role hierarchy<br>- Usage tracking</p><p><h3>📊 Dashboard & Analytics</h3><br>- User statistics<br>- Role distribution<br>- System overview<br>- Activity monitoring</p><p><h2>Technology Stack</h2></p><p><h3>Frontend</h3><br>- <strong>React 18</strong> - UI framework<br>- <strong>Redux Toolkit</strong> - State management<br>- <strong>React Router</strong> - Navigation<br>- <strong>Tailwind CSS</strong> - Styling<br>- <strong>Axios</strong> - HTTP client</p><p><h3>Backend</h3><br>- <strong>Node.js</strong> - Runtime environment<br>- <strong>Express.js</strong> - Web framework<br>- <strong>MongoDB</strong> - Database<br>- <strong>Mongoose</strong> - ODM<br>- <strong>JWT</strong> - Authentication<br>- <strong>bcryptjs</strong> - Password hashing</p><p><h2>Security Features</h2></p><p>- JWT token authentication<br>- Password hashing with bcrypt<br>- Rate limiting<br>- CORS protection<br>- Security headers<br>- Input validation<br>- Role-based permissions</p><p><h2>Demo Accounts</h2></p><p>| Role | Email | Password | Permissions |<br>|------|-------|----------|-------------|<br>| Admin | admin@example.com | Admin123! | Full access |<br>| Editor | editor@example.com | Editor123! | User read/write, role read |<br>| Viewer | viewer@example.com | Viewer123! | Read-only access |<br>| Manager | manager@example.com | Manager123! | User management, role read |</p><p><h2>Getting Started</h2></p><p><h3>Prerequisites</h3><br>- Node.js v14+<br>- MongoDB v4.4+<br>- npm or yarn</p><p><h3>Installation</h3><br><pre><code>bash<br><h1>Clone repository</h1><br>git clone https://github.com/riyajuddin/fullstackrolebaseaccessapp.git<br>cd fullstackrolebaseaccessapp</p><p><h1>Install dependencies</h1><br>npm run install:all</p><p><h1>Set up environment variables</h1><br>cp backend/env.example backend/.env<br>cp frontend/env.example frontend/.env</p><p><h1>Start MongoDB</h1><br>mongod</p><p><h1>Seed database</h1><br>npm run seed</p><p><h1>Start development servers</h1><br>npm run dev<br></code></pre></p><p><h3>Access Application</h3><br>- <strong>Frontend</strong>: http://localhost:3000<br>- <strong>Backend API</strong>: http://localhost:5001<br>- <strong>Health Check</strong>: http://localhost:5001/health</p><p><h2>Contributing</h2></p><p><li>Fork the repository</li><br><li>Create a feature branch</li><br><li>Make your changes</li><br><li>Add tests for new functionality</li><br><li>Ensure all tests pass</li><br><li>Submit a pull request</li></p><p><h2>Support</h2></p><p>For questions or issues:<br><li>Check the documentation in this directory</li><br><li>Review the main <a href="../README.md">README.md</a></li><br><li>Create an issue on GitHub</li><br><li>Contact the development team</li></ul></p><p><h2>License</h2></p><p>This project is licensed under the MIT License - see the <a href="../LICENSE">LICENSE</a> file for details.</p><p>---</p><p><strong>Last Updated</strong>: January 2025  <br><strong>Version</strong>: 1.0.0  <br><strong>Maintainer</strong>: Development Team<br></p>
+    </div>
+</body>
+</html>

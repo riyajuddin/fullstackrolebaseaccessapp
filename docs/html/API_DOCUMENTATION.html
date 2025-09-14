@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBAC Application API Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        
+        h1:first-child {
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+        
+        h4 {
+            color: #7f8c8d;
+            margin-top: 15px;
+        }
+        
+        code {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 3px;
+            padding: 2px 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            font-style: italic;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin: 0;
+            border: none;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            margin: 10px 0 0 0;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+        }
+        
+        .print-button:hover {
+            background-color: #2980b9;
+        }
+        
+        @media print {
+            .print-button {
+                display: none;
+            }
+            
+            body {
+                background-color: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print PDF</button>
+    
+    <div class="container">
+        <div class="header">
+            <h1>RBAC Application API Documentation</h1>
+            <p>RBAC Application Documentation</p>
+        </div>
+        
+        <p><h1>RBAC Application API Documentation</h1></p><p><h2>Base URL</h2><br><pre><code><br>Development: http://localhost:5001/api<br>Production: https://your-domain.com/api<br></code></pre></p><p><h2>Authentication</h2></p><p>All protected endpoints require a valid JWT token in the Authorization header:<br><pre><code><br>Authorization: Bearer <jwt_token><br></code></pre></p><p><h2>Response Format</h2></p><p>All API responses follow a consistent format:</p><p><h3>Success Response</h3><br><pre><code>json<br>{<br>  "success": true,<br>  "message": "Operation successful",<br>  "data": {<br>    // Response data<br>  }<br>}<br></code></pre></p><p><h3>Error Response</h3><br><pre><code>json<br>{<br>  "success": false,<br>  "message": "Error description",<br>  "errors": [<br>    // Array of specific errors (optional)<br>  ]<br>}<br></code></pre></p><p><h2>Authentication Endpoints</h2></p><p><h3>POST /auth/login</h3><br>Authenticate user and return JWT token.</p><p><strong>Request Body:</strong><br><pre><code>json<br>{<br>  "email": "user@example.com",<br>  "password": "password123"<br>}<br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "message": "Login successful",<br>  "data": {<br>    "user": {<br>      "_id": "user_id",<br>      "firstName": "John",<br>      "lastName": "Doe",<br>      "email": "user@example.com",<br>      "role": {<br>        "_id": "role_id",<br>        "name": "admin",<br>        "permissions": ["user:read", "user:write"]<br>      },<br>      "isActive": true,<br>      "lastLogin": "2025-01-01T00:00:00.000Z"<br>    },<br>    "token": "jwt_access_token",<br>    "refreshToken": "jwt_refresh_token"<br>  }<br>}<br></code></pre></p><p><strong>Error Responses:</strong><br>- <code>401 Unauthorized</code>: Invalid credentials<br>- <code>400 Bad Request</code>: Missing or invalid input</p><p>---</p><p><h3>POST /auth/register</h3><br>Register a new user.</p><p><strong>Request Body:</strong><br><pre><code>json<br>{<br>  "firstName": "John",<br>  "lastName": "Doe",<br>  "email": "user@example.com",<br>  "password": "password123",<br>  "role": "role_id"<br>}<br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "message": "User registered successfully",<br>  "data": {<br>    "user": {<br>      "_id": "user_id",<br>      "firstName": "John",<br>      "lastName": "Doe",<br>      "email": "user@example.com",<br>      "role": {<br>        "_id": "role_id",<br>        "name": "viewer",<br>        "permissions": ["user:read"]<br>      },<br>      "isActive": true<br>    },<br>    "token": "jwt_access_token",<br>    "refreshToken": "jwt_refresh_token"<br>  }<br>}<br></code></pre></p><p><strong>Error Responses:</strong><br>- <code>400 Bad Request</code>: User already exists or invalid input<br>- <code>400 Bad Request</code>: Invalid role ID</p><p>---</p><p><h3>GET /auth/me</h3><br>Get current authenticated user information.</p><p><strong>Headers:</strong><br><pre><code><br>Authorization: Bearer <jwt_token><br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "data": {<br>    "user": {<br>      "_id": "user_id",<br>      "firstName": "John",<br>      "lastName": "Doe",<br>      "email": "user@example.com",<br>      "role": {<br>        "_id": "role_id",<br>        "name": "admin",<br>        "permissions": ["user:read", "user:write", "role:read"]<br>      },<br>      "isActive": true,<br>      "lastLogin": "2025-01-01T00:00:00.000Z"<br>    }<br>  }<br>}<br></code></pre></p><p><strong>Error Responses:</strong><br>- <code>401 Unauthorized</code>: Invalid or expired token</p><p>---</p><p><h3>POST /auth/logout</h3><br>Logout current user.</p><p><strong>Headers:</strong><br><pre><code><br>Authorization: Bearer <jwt_token><br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "message": "Logout successful"<br>}<br></code></pre></p><p>---</p><p><h2>User Management Endpoints</h2></p><p><h3>GET /users</h3><br>Get all users with pagination and filtering.</p><p><strong>Headers:</strong><br><pre><code><br>Authorization: Bearer <jwt_token><br></code></pre></p><p><strong>Query Parameters:</strong><br>- <code>page</code> (number, optional): Page number (default: 1)<br>- <code>limit</code> (number, optional): Items per page (default: 10)<br>- <code>search</code> (string, optional): Search term for name or email<br>- <code>role</code> (string, optional): Filter by role ID<br>- <code>isActive</code> (boolean, optional): Filter by active status</p><p><strong>Example Request:</strong><br><pre><code><br>GET /users?page=1&limit=10&search=john&role=role_id&isActive=true<br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "data": {<br>    "users": [<br>      {<br>        "_id": "user_id",<br>        "firstName": "John",<br>        "lastName": "Doe",<br>        "email": "john@example.com",<br>        "role": {<br>          "_id": "role_id",<br>          "name": "admin",<br>          "permissions": ["user:read", "user:write"]<br>        },<br>        "isActive": true,<br>        "lastLogin": "2025-01-01T00:00:00.000Z",<br>        "createdAt": "2025-01-01T00:00:00.000Z",<br>        "updatedAt": "2025-01-01T00:00:00.000Z"<br>      }<br>    ],<br>    "pagination": {<br>      "currentPage": 1,<br>      "totalPages": 5,<br>      "totalUsers": 50,<br>      "hasNext": true,<br>      "hasPrev": false<br>    }<br>  }<br>}<br></code></pre></p><p><strong>Required Permission:</strong> <code>user:read</code></p><p>---</p><p><h3>GET /users/:id</h3><br>Get user by ID.</p><p><strong>Headers:</strong><br><pre><code><br>Authorization: Bearer <jwt_token><br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "data": {<br>    "user": {<br>      "_id": "user_id",<br>      "firstName": "John",<br>      "lastName": "Doe",<br>      "email": "john@example.com",<br>      "role": {<br>        "_id": "role_id",<br>        "name": "admin",<br>        "permissions": ["user:read", "user:write"]<br>      },<br>      "isActive": true,<br>      "lastLogin": "2025-01-01T00:00:00.000Z",<br>      "createdAt": "2025-01-01T00:00:00.000Z",<br>      "updatedAt": "2025-01-01T00:00:00.000Z"<br>    }<br>  }<br>}<br></code></pre></p><p><strong>Required Permission:</strong> <code>user:read</code></p><p>---</p><p><h3>POST /users</h3><br>Create a new user.</p><p><strong>Headers:</strong><br><pre><code><br>Authorization: Bearer <jwt_token><br></code></pre></p><p><strong>Request Body:</strong><br><pre><code>json<br>{<br>  "firstName": "Jane",<br>  "lastName": "Smith",<br>  "email": "jane@example.com",<br>  "password": "password123",<br>  "role": "role_id"<br>}<br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "message": "User created successfully",<br>  "data": {<br>    "user": {<br>      "_id": "new_user_id",<br>      "firstName": "Jane",<br>      "lastName": "Smith",<br>      "email": "jane@example.com",<br>      "role": {<br>        "_id": "role_id",<br>        "name": "editor",<br>        "permissions": ["user:read", "user:write"]<br>      },<br>      "isActive": true,<br>      "createdAt": "2025-01-01T00:00:00.000Z",<br>      "updatedAt": "2025-01-01T00:00:00.000Z"<br>    }<br>  }<br>}<br></code></pre></p><p><strong>Required Permission:</strong> <code>user:write</code></p><p><strong>Error Responses:</strong><br>- <code>400 Bad Request</code>: User already exists or invalid input<br>- <code>400 Bad Request</code>: Invalid role ID</p><p>---</p><p><h3>PUT /users/:id</h3><br>Update user information.</p><p><strong>Headers:</strong><br><pre><code><br>Authorization: Bearer <jwt_token><br></code></pre></p><p><strong>Request Body:</strong><br><pre><code>json<br>{<br>  "firstName": "Jane",<br>  "lastName": "Smith",<br>  "email": "jane@example.com",<br>  "role": "new_role_id",<br>  "isActive": true<br>}<br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "message": "User updated successfully",<br>  "data": {<br>    "user": {<br>      "_id": "user_id",<br>      "firstName": "Jane",<br>      "lastName": "Smith",<br>      "email": "jane@example.com",<br>      "role": {<br>        "_id": "new_role_id",<br>        "name": "manager",<br>        "permissions": ["user:read", "user:write", "user:delete"]<br>      },<br>      "isActive": true,<br>      "updatedAt": "2025-01-01T00:00:00.000Z"<br>    }<br>  }<br>}<br></code></pre></p><p><strong>Required Permission:</strong> <code>user:write</code></p><p>---</p><p><h3>DELETE /users/:id</h3><br>Delete a user.</p><p><strong>Headers:</strong><br><pre><code><br>Authorization: Bearer <jwt_token><br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "message": "User deleted successfully"<br>}<br></code></pre></p><p><strong>Required Permission:</strong> <code>user:delete</code></p><p><strong>Error Responses:</strong><br>- <code>404 Not Found</code>: User not found<br>- <code>400 Bad Request</code>: Cannot delete user (e.g., last admin user)</p><p>---</p><p><h2>Role Management Endpoints</h2></p><p><h3>GET /roles</h3><br>Get all roles.</p><p><strong>Headers:</strong><br><pre><code><br>Authorization: Bearer <jwt_token><br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "data": {<br>    "roles": [<br>      {<br>        "_id": "role_id",<br>        "name": "admin",<br>        "description": "Full system access with all permissions",<br>        "permissions": [<br>          "user:read",<br>          "user:write",<br>          "user:delete",<br>          "role:read",<br>          "role:write",<br>          "role:delete",<br>          "dashboard:read",<br>          "admin:access"<br>        ],<br>        "isActive": true,<br>        "createdAt": "2025-01-01T00:00:00.000Z",<br>        "updatedAt": "2025-01-01T00:00:00.000Z"<br>      }<br>    ]<br>  }<br>}<br></code></pre></p><p><strong>Required Permission:</strong> <code>role:read</code></p><p>---</p><p><h3>GET /roles/:id</h3><br>Get role by ID.</p><p><strong>Headers:</strong><br><pre><code><br>Authorization: Bearer <jwt_token><br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "data": {<br>    "role": {<br>      "_id": "role_id",<br>      "name": "admin",<br>      "description": "Full system access with all permissions",<br>      "permissions": [<br>        "user:read",<br>        "user:write",<br>        "user:delete",<br>        "role:read",<br>        "role:write",<br>        "role:delete",<br>        "dashboard:read",<br>        "admin:access"<br>      ],<br>      "isActive": true,<br>      "createdAt": "2025-01-01T00:00:00.000Z",<br>      "updatedAt": "2025-01-01T00:00:00.000Z"<br>    }<br>  }<br>}<br></code></pre></p><p><strong>Required Permission:</strong> <code>role:read</code></p><p>---</p><p><h3>POST /roles</h3><br>Create a new role.</p><p><strong>Headers:</strong><br><pre><code><br>Authorization: Bearer <jwt_token><br></code></pre></p><p><strong>Request Body:</strong><br><pre><code>json<br>{<br>  "name": "custom_role",<br>  "description": "Custom role with specific permissions",<br>  "permissions": [<br>    "user:read",<br>    "dashboard:read"<br>  ]<br>}<br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "message": "Role created successfully",<br>  "data": {<br>    "role": {<br>      "_id": "new_role_id",<br>      "name": "custom_role",<br>      "description": "Custom role with specific permissions",<br>      "permissions": [<br>        "user:read",<br>        "dashboard:read"<br>      ],<br>      "isActive": true,<br>      "createdAt": "2025-01-01T00:00:00.000Z",<br>      "updatedAt": "2025-01-01T00:00:00.000Z"<br>    }<br>  }<br>}<br></code></pre></p><p><strong>Required Permission:</strong> <code>role:write</code></p><p><strong>Error Responses:</strong><br>- <code>400 Bad Request</code>: Role name already exists<br>- <code>400 Bad Request</code>: Invalid permissions</p><p>---</p><p><h3>PUT /roles/:id</h3><br>Update role information.</p><p><strong>Headers:</strong><br><pre><code><br>Authorization: Bearer <jwt_token><br></code></pre></p><p><strong>Request Body:</strong><br><pre><code>json<br>{<br>  "name": "updated_role",<br>  "description": "Updated role description",<br>  "permissions": [<br>    "user:read",<br>    "user:write",<br>    "dashboard:read"<br>  ]<br>}<br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "message": "Role updated successfully",<br>  "data": {<br>    "role": {<br>      "_id": "role_id",<br>      "name": "updated_role",<br>      "description": "Updated role description",<br>      "permissions": [<br>        "user:read",<br>        "user:write",<br>        "dashboard:read"<br>      ],<br>      "isActive": true,<br>      "updatedAt": "2025-01-01T00:00:00.000Z"<br>    }<br>  }<br>}<br></code></pre></p><p><strong>Required Permission:</strong> <code>role:write</code></p><p>---</p><p><h3>DELETE /roles/:id</h3><br>Delete a role.</p><p><strong>Headers:</strong><br><pre><code><br>Authorization: Bearer <jwt_token><br></code></pre></p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "message": "Role deleted successfully"<br>}<br></code></pre></p><p><strong>Required Permission:</strong> <code>role:delete</code></p><p><strong>Error Responses:</strong><br>- <code>404 Not Found</code>: Role not found<br>- <code>400 Bad Request</code>: Cannot delete role (e.g., role is in use)</p><p>---</p><p><h2>System Endpoints</h2></p><p><h3>GET /health</h3><br>Health check endpoint.</p><p><strong>Response:</strong><br><pre><code>json<br>{<br>  "success": true,<br>  "message": "Server is running",<br>  "timestamp": "2025-01-01T00:00:00.000Z"<br>}<br></code></pre></p><p>---</p><p><h2>Error Codes</h2></p><p><h3>HTTP Status Codes</h3><br>- <code>200 OK</code>: Request successful<br>- <code>201 Created</code>: Resource created successfully<br>- <code>400 Bad Request</code>: Invalid request data<br>- <code>401 Unauthorized</code>: Authentication required or failed<br>- <code>403 Forbidden</code>: Insufficient permissions<br>- <code>404 Not Found</code>: Resource not found<br>- <code>409 Conflict</code>: Resource already exists<br>- <code>429 Too Many Requests</code>: Rate limit exceeded<br>- <code>500 Internal Server Error</code>: Server error</p><p><h3>Application Error Codes</h3><br>- <code>VALIDATION_ERROR</code>: Input validation failed<br>- <code>AUTHENTICATION_FAILED</code>: Invalid credentials<br>- <code>AUTHORIZATION_FAILED</code>: Insufficient permissions<br>- <code>RESOURCE_NOT_FOUND</code>: Requested resource doesn't exist<br>- <code>RESOURCE_ALREADY_EXISTS</code>: Resource with same identifier exists<br>- <code>DATABASE_ERROR</code>: Database operation failed<br>- <code>TOKEN_EXPIRED</code>: JWT token has expired<br>- <code>TOKEN_INVALID</code>: JWT token is invalid</p><p>---</p><p><h2>Rate Limiting</h2></p><p>The API implements rate limiting to prevent abuse:</p><p>- <strong>Authentication endpoints</strong>: 5 requests per 15 minutes per IP<br>- <strong>General API endpoints</strong>: 100 requests per 15 minutes per IP<br>- <strong>Headers included in response</strong>:<br>  - <code>X-RateLimit-Limit</code>: Request limit per window<br>  - <code>X-RateLimit-Remaining</code>: Remaining requests in current window<br>  - <code>X-RateLimit-Reset</code>: Time when the rate limit resets</p><p>---</p><p><h2>Permissions</h2></p><p><h3>Permission Format</h3><br>Permissions follow the format: <code>resource:action</code></p><p><h3>Available Permissions</h3><br>- <code>user:read</code> - View users<br>- <code>user:write</code> - Create and update users<br>- <code>user:delete</code> - Delete users<br>- <code>role:read</code> - View roles<br>- <code>role:write</code> - Create and update roles<br>- <code>role:delete</code> - Delete roles<br>- <code>dashboard:read</code> - Access dashboard<br>- <code>admin:access</code> - Access admin panel</p><p><h3>Role Hierarchy</h3><br><ul><li><strong>Admin</strong>: All permissions</li><br><li><strong>Manager</strong>: User management + role viewing</li><br><li><strong>Editor</strong>: User read/write + role viewing</li><br><li><strong>Viewer</strong>: Read-only access</li></p><p>---</p><p><h2>Examples</h2></p><p><h3>Complete Authentication Flow</h3></p><p><li><strong>Login:</strong></li><br><pre><code>bash<br>curl -X POST http://localhost:5001/api/auth/login \<br>  -H "Content-Type: application/json" \<br>  -d '{"email":"admin@example.com","password":"Admin123!"}'<br></code></pre></p><p><li><strong>Use token for protected request:</strong></li><br><pre><code>bash<br>curl -X GET http://localhost:5001/api/users \<br>  -H "Authorization: Bearer <jwt_token>"<br></code></pre></p><p><li><strong>Logout:</strong></li><br><pre><code>bash<br>curl -X POST http://localhost:5001/api/auth/logout \<br>  -H "Authorization: Bearer <jwt_token>"<br></code></pre></p><p><h3>User Management Example</h3></p><p><li><strong>Create user:</strong></li><br><pre><code>bash<br>curl -X POST http://localhost:5001/api/users \<br>  -H "Authorization: Bearer <jwt_token>" \<br>  -H "Content-Type: application/json" \<br>  -d '{<br>    "firstName": "John",<br>    "lastName": "Doe",<br>    "email": "john@example.com",<br>    "password": "password123",<br>    "role": "role_id"<br>  }'<br></code></pre></p><p><li><strong>Get users with pagination:</strong></li></ul><br><pre><code>bash<br>curl -X GET "http://localhost:5001/api/users?page=1&limit=10&search=john" \<br>  -H "Authorization: Bearer <jwt_token>"<br></code></pre></p><p>This comprehensive API documentation provides all the information needed to interact with the RBAC application's backend services.<br></p>
+    </div>
+</body>
+</html>

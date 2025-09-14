@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBAC Application Deployment Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        
+        h1:first-child {
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+        
+        h4 {
+            color: #7f8c8d;
+            margin-top: 15px;
+        }
+        
+        code {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 3px;
+            padding: 2px 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            font-style: italic;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin: 0;
+            border: none;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            margin: 10px 0 0 0;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+        }
+        
+        .print-button:hover {
+            background-color: #2980b9;
+        }
+        
+        @media print {
+            .print-button {
+                display: none;
+            }
+            
+            body {
+                background-color: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print PDF</button>
+    
+    <div class="container">
+        <div class="header">
+            <h1>RBAC Application Deployment Guide</h1>
+            <p>RBAC Application Documentation</p>
+        </div>
+        
+        <p><h1>RBAC Application Deployment Guide</h1></p><p><h2>Overview</h2></p><p>This guide provides comprehensive instructions for deploying the RBAC application in various environments, from development to production.</p><p><h2>Prerequisites</h2></p><p><h3>System Requirements</h3><br>- <strong>Node.js</strong>: v14 or higher<br>- <strong>npm</strong>: v6 or higher<br>- <strong>MongoDB</strong>: v4.4 or higher<br>- <strong>Git</strong>: For version control</p><p><h3>Production Requirements</h3><br>- <strong>Server</strong>: Ubuntu 20.04+ or CentOS 8+<br>- <strong>RAM</strong>: Minimum 2GB, Recommended 4GB+<br>- <strong>Storage</strong>: Minimum 20GB SSD<br>- <strong>Network</strong>: Stable internet connection</p><p><h2>Environment Setup</h2></p><p><h3>1. Development Environment</h3></p><p>#### Local Development<br><pre><code>bash<br><h1>Clone the repository</h1><br>git clone https://github.com/riyajuddin/fullstackrolebaseaccessapp.git<br>cd fullstackrolebaseaccessapp</p><p><h1>Install dependencies</h1><br>npm run install:all</p><p><h1>Set up environment variables</h1><br>cp backend/env.example backend/.env<br>cp frontend/env.example frontend/.env</p><p><h1>Start MongoDB (if using local instance)</h1><br>mongod</p><p><h1>Seed the database</h1><br>npm run seed</p><p><h1>Start development servers</h1><br>npm run dev<br></code></pre></p><p>#### Environment Variables</p><p><strong>Backend (.env):</strong><br><pre><code>env<br>NODE_ENV=development<br>PORT=5001<br>MONGODB_URI=mongodb://localhost:27017/rbac-app<br>JWT_SECRET=your-super-secret-jwt-key-change-this-in-production<br>JWT_EXPIRE=7d<br>BCRYPT_ROUNDS=12<br></code></pre></p><p><strong>Frontend (.env):</strong><br><pre><code>env<br>REACT_APP_API_URL=http://localhost:5001/api<br></code></pre></p><p><h3>2. Production Environment</h3></p><p>#### Server Setup</p><p><strong>Ubuntu/Debian:</strong><br><pre><code>bash<br><h1>Update system</h1><br>sudo apt update && sudo apt upgrade -y</p><p><h1>Install Node.js</h1><br>curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -<br>sudo apt-get install -y nodejs</p><p><h1>Install MongoDB</h1><br>wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -<br>echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list<br>sudo apt-get update<br>sudo apt-get install -y mongodb-org</p><p><h1>Install PM2 for process management</h1><br>sudo npm install -g pm2</p><p><h1>Install Nginx</h1><br>sudo apt install nginx -y<br></code></pre></p><p><strong>CentOS/RHEL:</strong><br><pre><code>bash<br><h1>Update system</h1><br>sudo yum update -y</p><p><h1>Install Node.js</h1><br>curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -<br>sudo yum install -y nodejs</p><p><h1>Install MongoDB</h1><br>sudo yum install -y mongodb-org</p><p><h1>Install PM2</h1><br>sudo npm install -g pm2</p><p><h1>Install Nginx</h1><br>sudo yum install nginx -y<br></code></pre></p><p><h2>Deployment Methods</h2></p><p><h3>Method 1: Traditional Server Deployment</h3></p><p>#### 1. Prepare the Application</p><p><pre><code>bash<br><h1>Clone repository on server</h1><br>git clone https://github.com/riyajuddin/fullstackrolebaseaccessapp.git<br>cd fullstackrolebaseaccessapp</p><p><h1>Install dependencies</h1><br>npm run install:all</p><p><h1>Build frontend for production</h1><br>cd frontend<br>npm run build<br>cd ..<br></code></pre></p><p>#### 2. Configure Environment Variables</p><p><strong>Backend Production (.env):</strong><br><pre><code>env<br>NODE_ENV=production<br>PORT=5001<br>MONGODB_URI=mongodb://localhost:27017/rbac-app-prod<br>JWT_SECRET=your-very-secure-jwt-secret-key-for-production<br>JWT_EXPIRE=7d<br>BCRYPT_ROUNDS=12<br></code></pre></p><p><strong>Frontend Production (.env):</strong><br><pre><code>env<br>REACT_APP_API_URL=https://your-domain.com/api<br></code></pre></p><p>#### 3. Database Setup</p><p><pre><code>bash<br><h1>Start MongoDB service</h1><br>sudo systemctl start mongod<br>sudo systemctl enable mongod</p><p><h1>Seed production database</h1><br>cd backend<br>npm run seed<br></code></pre></p><p>#### 4. Configure PM2</p><p>Create <code>ecosystem.config.js</code>:<br><pre><code>javascript<br>module.exports = {<br>  apps: [{<br>    name: 'rbac-backend',<br>    script: './backend/src/index.js',<br>    instances: 'max',<br>    exec_mode: 'cluster',<br>    env: {<br>      NODE_ENV: 'production',<br>      PORT: 5001<br>    },<br>    error_file: './logs/err.log',<br>    out_file: './logs/out.log',<br>    log_file: './logs/combined.log',<br>    time: true<br>  }]<br>};<br></code></pre></p><p>Start with PM2:<br><pre><code>bash<br>pm2 start ecosystem.config.js<br>pm2 save<br>pm2 startup<br></code></pre></p><p>#### 5. Configure Nginx</p><p>Create <code>/etc/nginx/sites-available/rbac-app</code>:<br><pre><code>nginx<br>server {<br>    listen 80;<br>    server_name your-domain.com;</p><p>    # Frontend<br>    location / {<br>        root /path/to/fullstackrolebaseaccessapp/frontend/build;<br>        index index.html;<br>        try_files $uri $uri/ /index.html;<br>    }</p><p>    # Backend API<br>    location /api {<br>        proxy_pass http://localhost:5001;<br>        proxy_http_version 1.1;<br>        proxy_set_header Upgrade $http_upgrade;<br>        proxy_set_header Connection 'upgrade';<br>        proxy_set_header Host $host;<br>        proxy_set_header X-Real-IP $remote_addr;<br>        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;<br>        proxy_set_header X-Forwarded-Proto $scheme;<br>        proxy_cache_bypass $http_upgrade;<br>    }</p><p>    # Security headers<br>    add_header X-Frame-Options "SAMEORIGIN" always;<br>    add_header X-XSS-Protection "1; mode=block" always;<br>    add_header X-Content-Type-Options "nosniff" always;<br>    add_header Referrer-Policy "no-referrer-when-downgrade" always;<br>    add_header Content-Security-Policy "default-src 'self' http: https: data: blob: 'unsafe-inline'" always;<br>}<br></code></pre></p><p>Enable the site:<br><pre><code>bash<br>sudo ln -s /etc/nginx/sites-available/rbac-app /etc/nginx/sites-enabled/<br>sudo nginx -t<br>sudo systemctl restart nginx<br></code></pre></p><p>#### 6. SSL Configuration</p><p>Install Certbot:<br><pre><code>bash<br>sudo apt install certbot python3-certbot-nginx -y<br></code></pre></p><p>Obtain SSL certificate:<br><pre><code>bash<br>sudo certbot --nginx -d your-domain.com<br></code></pre></p><p><h3>Method 2: Docker Deployment</h3></p><p>#### 1. Create Dockerfile for Backend</p><p>Create <code>backend/Dockerfile</code>:<br><pre><code>dockerfile<br>FROM node:18-alpine</p><p>WORKDIR /app</p><p>COPY package*.json ./<br>RUN npm ci --only=production</p><p>COPY . .</p><p>EXPOSE 5001</p><p>CMD ["npm", "start"]<br></code></pre></p><p>#### 2. Create Dockerfile for Frontend</p><p>Create <code>frontend/Dockerfile</code>:<br><pre><code>dockerfile<br>FROM node:18-alpine as build</p><p>WORKDIR /app</p><p>COPY package*.json ./<br>RUN npm ci</p><p>COPY . .<br>RUN npm run build</p><p>FROM nginx:alpine<br>COPY --from=build /app/build /usr/share/nginx/html<br>COPY nginx.conf /etc/nginx/nginx.conf</p><p>EXPOSE 80</p><p>CMD ["nginx", "-g", "daemon off;"]<br></code></pre></p><p>#### 3. Create Docker Compose</p><p>Create <code>docker-compose.yml</code>:<br><pre><code>yaml<br>version: '3.8'</p><p>services:<br>  mongodb:<br>    image: mongo:6.0<br>    container_name: rbac-mongodb<br>    restart: unless-stopped<br>    environment:<br>      MONGO_INITDB_ROOT_USERNAME: admin<br>      MONGO_INITDB_ROOT_PASSWORD: password<br>      MONGO_INITDB_DATABASE: rbac-app<br>    volumes:<br>      - mongodb_data:/data/db<br>    ports:<br>      - "27017:27017"<br>    networks:<br>      - rbac-network</p><p>  backend:<br>    build: ./backend<br>    container_name: rbac-backend<br>    restart: unless-stopped<br>    environment:<br>      NODE_ENV: production<br>      PORT: 5001<br>      MONGODB_URI: mongodb://admin:password@mongodb:27017/rbac-app?authSource=admin<br>      JWT_SECRET: your-super-secure-jwt-secret<br>      JWT_EXPIRE: 7d<br>      BCRYPT_ROUNDS: 12<br>    ports:<br>      - "5001:5001"<br>    depends_on:<br>      - mongodb<br>    networks:<br>      - rbac-network</p><p>  frontend:<br>    build: ./frontend<br>    container_name: rbac-frontend<br>    restart: unless-stopped<br>    environment:<br>      REACT_APP_API_URL: http://localhost:5001/api<br>    ports:<br>      - "80:80"<br>    depends_on:<br>      - backend<br>    networks:<br>      - rbac-network</p><p>volumes:<br>  mongodb_data:</p><p>networks:<br>  rbac-network:<br>    driver: bridge<br></code></pre></p><p>#### 4. Deploy with Docker</p><p><pre><code>bash<br><h1>Build and start services</h1><br>docker-compose up -d</p><p><h1>View logs</h1><br>docker-compose logs -f</p><p><h1>Stop services</h1><br>docker-compose down<br></code></pre></p><p><h3>Method 3: Cloud Platform Deployment</h3></p><p>#### Heroku Deployment</p><p><strong>1. Install Heroku CLI:</strong><br><pre><code>bash<br><h1>Ubuntu/Debian</h1><br>curl https://cli-assets.heroku.com/install.sh | sh</p><p><h1>macOS</h1><br>brew install heroku/brew/heroku<br></code></pre></p><p><strong>2. Prepare for Heroku:</strong><br><pre><code>bash<br><h1>Login to Heroku</h1><br>heroku login</p><p><h1>Create Heroku apps</h1><br>heroku create rbac-backend<br>heroku create rbac-frontend</p><p><h1>Add MongoDB addon</h1><br>heroku addons:create mongolab:sandbox --app rbac-backend<br></code></pre></p><p><strong>3. Configure Environment Variables:</strong><br><pre><code>bash<br><h1>Backend environment variables</h1><br>heroku config:set NODE_ENV=production --app rbac-backend<br>heroku config:set JWT_SECRET=your-secure-jwt-secret --app rbac-backend<br>heroku config:set JWT_EXPIRE=7d --app rbac-backend<br>heroku config:set BCRYPT_ROUNDS=12 --app rbac-backend</p><p><h1>Frontend environment variables</h1><br>heroku config:set REACT_APP_API_URL=https://rbac-backend.herokuapp.com/api --app rbac-frontend<br></code></pre></p><p><strong>4. Deploy:</strong><br><pre><code>bash<br><h1>Deploy backend</h1><br>cd backend<br>git init<br>heroku git:remote -a rbac-backend<br>git add .<br>git commit -m "Deploy backend"<br>git push heroku main</p><p><h1>Deploy frontend</h1><br>cd ../frontend<br>git init<br>heroku git:remote -a rbac-frontend<br>git add .<br>git commit -m "Deploy frontend"<br>git push heroku main<br></code></pre></p><p>#### Vercel Deployment (Frontend)</p><p><strong>1. Install Vercel CLI:</strong><br><pre><code>bash<br>npm install -g vercel<br></code></pre></p><p><strong>2. Deploy Frontend:</strong><br><pre><code>bash<br>cd frontend<br>vercel</p><p><h1>Set environment variables</h1><br>vercel env add REACT_APP_API_URL<br></code></pre></p><p>#### Railway Deployment</p><p><strong>1. Install Railway CLI:</strong><br><pre><code>bash<br>npm install -g @railway/cli<br></code></pre></p><p><strong>2. Deploy:</strong><br><pre><code>bash<br><h1>Login to Railway</h1><br>railway login</p><p><h1>Deploy backend</h1><br>cd backend<br>railway deploy</p><p><h1>Deploy frontend</h1><br>cd ../frontend<br>railway deploy<br></code></pre></p><p><h2>Database Management</h2></p><p><h3>MongoDB Atlas (Cloud Database)</h3></p><p><strong>1. Create MongoDB Atlas Account:</strong><br>- Go to <a href="https://www.mongodb.com/cloud/atlas">MongoDB Atlas</a><br>- Create a new cluster<br>- Configure network access<br>- Create database user</p><p><strong>2. Update Connection String:</strong><br><pre><code>env<br>MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/rbac-app?retryWrites=true&w=majority<br></code></pre></p><p><h3>Local MongoDB Management</h3></p><p><strong>1. Backup Database:</strong><br><pre><code>bash<br>mongodump --db rbac-app --out /backup/path<br></code></pre></p><p><strong>2. Restore Database:</strong><br><pre><code>bash<br>mongorestore --db rbac-app /backup/path/rbac-app<br></code></pre></p><p><strong>3. Monitor Database:</strong><br><pre><code>bash<br><h1>Connect to MongoDB shell</h1><br>mongo</p><p><h1>Show databases</h1><br>show dbs</p><p><h1>Use database</h1><br>use rbac-app</p><p><h1>Show collections</h1><br>show collections</p><p><h1>Query users</h1><br>db.users.find()<br></code></pre></p><p><h2>Security Configuration</h2></p><p><h3>1. Environment Security</h3></p><p><strong>Secure Environment Variables:</strong><br><pre><code>bash<br><h1>Generate secure JWT secret</h1><br>openssl rand -base64 64</p><p><h1>Set secure file permissions</h1><br>chmod 600 .env<br></code></pre></p><p><h3>2. Server Security</h3></p><p><strong>Firewall Configuration:</strong><br><pre><code>bash<br><h1>Ubuntu/Debian</h1><br>sudo ufw enable<br>sudo ufw allow ssh<br>sudo ufw allow 80<br>sudo ufw allow 443<br>sudo ufw deny 5001  # Block direct backend access<br></code></pre></p><p><strong>Fail2Ban Configuration:</strong><br><pre><code>bash<br>sudo apt install fail2ban -y<br>sudo systemctl enable fail2ban<br></code></pre></p><p><h3>3. Application Security</h3></p><p><strong>Security Headers (Nginx):</strong><br><pre><code>nginx<br>add_header X-Frame-Options "SAMEORIGIN" always;<br>add_header X-XSS-Protection "1; mode=block" always;<br>add_header X-Content-Type-Options "nosniff" always;<br>add_header Referrer-Policy "no-referrer-when-downgrade" always;<br>add_header Content-Security-Policy "default-src 'self' http: https: data: blob: 'unsafe-inline'" always;<br>add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;<br></code></pre></p><p><h2>Monitoring and Logging</h2></p><p><h3>1. Application Monitoring</h3></p><p><strong>PM2 Monitoring:</strong><br><pre><code>bash<br><h1>Monitor processes</h1><br>pm2 monit</p><p><h1>View logs</h1><br>pm2 logs</p><p><h1>Restart application</h1><br>pm2 restart rbac-backend<br></code></pre></p><p><h3>2. System Monitoring</h3></p><p><strong>Install monitoring tools:</strong><br><pre><code>bash<br><h1>Install htop for system monitoring</h1><br>sudo apt install htop -y</p><p><h1>Install iotop for I/O monitoring</h1><br>sudo apt install iotop -y<br></code></pre></p><p><h3>3. Log Management</h3></p><p><strong>Log Rotation:</strong><br><pre><code>bash<br><h1>Configure logrotate</h1><br>sudo nano /etc/logrotate.d/rbac-app<br></code></pre></p><p>Add configuration:<br><pre><code><br>/path/to/rbac-app/logs/*.log {<br>    daily<br>    missingok<br>    rotate 52<br>    compress<br>    delaycompress<br>    notifempty<br>    create 644 root root<br>}<br></code></pre></p><p><h2>Performance Optimization</h2></p><p><h3>1. Frontend Optimization</h3></p><p><strong>Build Optimization:</strong><br><pre><code>bash<br><h1>Analyze bundle size</h1><br>npm run build<br>npx webpack-bundle-analyzer build/static/js/*.js<br></code></pre></p><p><strong>CDN Configuration:</strong><br><pre><code>nginx<br><h1>Serve static files with cache headers</h1><br>location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {<br>    expires 1y;<br>    add_header Cache-Control "public, immutable";<br>}<br></code></pre></p><p><h3>2. Backend Optimization</h3></p><p><strong>PM2 Cluster Mode:</strong><br><pre><code>javascript<br>// ecosystem.config.js<br>module.exports = {<br>  apps: [{<br>    name: 'rbac-backend',<br>    script: './backend/src/index.js',<br>    instances: 'max',<br>    exec_mode: 'cluster'<br>  }]<br>};<br></code></pre></p><p><strong>Database Optimization:</strong><br><pre><code>javascript<br>// Add database indexes<br>db.users.createIndex({ "email": 1 })<br>db.users.createIndex({ "role": 1 })<br>db.roles.createIndex({ "name": 1 })<br></code></pre></p><p><h2>Backup and Recovery</h2></p><p><h3>1. Database Backup</h3></p><p><strong>Automated Backup Script:</strong><br><pre><code>bash<br>#!/bin/bash<br><h1>backup.sh</h1></p><p>DATE=$(date +%Y%m%d_%H%M%S)<br>BACKUP_DIR="/backup/mongodb"<br>DB_NAME="rbac-app"</p><p>mkdir -p $BACKUP_DIR</p><p>mongodump --db $DB_NAME --out $BACKUP_DIR/$DATE</p><p><h1>Keep only last 7 days of backups</h1><br>find $BACKUP_DIR -type d -mtime +7 -exec rm -rf {} \;<br></code></pre></p><p><strong>Schedule with Cron:</strong><br><pre><code>bash<br><h1>Add to crontab</h1><br>0 2 <em> </em> * /path/to/backup.sh<br></code></pre></p><p><h3>2. Application Backup</h3></p><p><strong>Code Backup:</strong><br><pre><code>bash<br><h1>Create application backup</h1><br>tar -czf rbac-app-backup-$(date +%Y%m%d).tar.gz /path/to/rbac-app<br></code></pre></p><p><h2>Troubleshooting</h2></p><p><h3>Common Issues</h3></p><p><strong>1. Port Already in Use:</strong><br><pre><code>bash<br><h1>Find process using port</h1><br>sudo lsof -i :5001</p><p><h1>Kill process</h1><br>sudo kill -9 PID<br></code></pre></p><p><strong>2. MongoDB Connection Issues:</strong><br><pre><code>bash<br><h1>Check MongoDB status</h1><br>sudo systemctl status mongod</p><p><h1>Check MongoDB logs</h1><br>sudo tail -f /var/log/mongodb/mongod.log<br></code></pre></p><p><strong>3. Permission Issues:</strong><br><pre><code>bash<br><h1>Fix file permissions</h1><br>sudo chown -R $USER:$USER /path/to/rbac-app<br>chmod -R 755 /path/to/rbac-app<br></code></pre></p><p><strong>4. Memory Issues:</strong><br><pre><code>bash<br><h1>Check memory usage</h1><br>free -h</p><p><h1>Check swap usage</h1><br>swapon -s<br></code></pre></p><p><h3>Log Analysis</h3></p><p><strong>Application Logs:</strong><br><pre><code>bash<br><h1>PM2 logs</h1><br>pm2 logs rbac-backend</p><p><h1>Nginx logs</h1><br>sudo tail -f /var/log/nginx/access.log<br>sudo tail -f /var/log/nginx/error.log<br></code></pre></p><p><strong>System Logs:</strong><br><pre><code>bash<br><h1>System logs</h1><br>sudo journalctl -u nginx<br>sudo journalctl -u mongod<br></code></pre></p><p><h2>Maintenance</h2></p><p><h3>Regular Maintenance Tasks</h3></p><p><strong>1. Weekly Tasks:</strong><br>- Check application logs<br>- Monitor disk space<br>- Review security updates<br>- Backup database</p><p><strong>2. Monthly Tasks:</strong><br>- Update dependencies<br>- Review performance metrics<br>- Security audit<br>- Clean old logs</p><p><strong>3. Quarterly Tasks:</strong><br>- Update system packages<br>- Review and update SSL certificates<br>- Performance optimization review<br>- Disaster recovery testing</p><p>This comprehensive deployment guide provides all the necessary information to deploy the RBAC application in various environments with proper security, monitoring, and maintenance procedures.<br></p>
+    </div>
+</body>
+</html>

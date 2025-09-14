@@ -9,7 +9,10 @@
     "dev:frontend": "cd frontend && npm start",
     "build": "cd frontend && npm run build",
     "seed": "cd backend && npm run seed",
-    "start": "cd backend && npm start"
+    "start": "cd backend && npm start",
+    "docs:generate": "node generate-docs.js",
+    "docs:html": "node generate-html-docs.js",
+    "docs:serve": "cd docs && python3 -m http.server 8080"
   },
   "keywords": [
     "rbac",

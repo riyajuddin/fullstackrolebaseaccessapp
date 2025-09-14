@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBAC Application Components Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        
+        h1:first-child {
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+        
+        h4 {
+            color: #7f8c8d;
+            margin-top: 15px;
+        }
+        
+        code {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 3px;
+            padding: 2px 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            font-style: italic;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin: 0;
+            border: none;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            margin: 10px 0 0 0;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+        }
+        
+        .print-button:hover {
+            background-color: #2980b9;
+        }
+        
+        @media print {
+            .print-button {
+                display: none;
+            }
+            
+            body {
+                background-color: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print PDF</button>
+    
+    <div class="container">
+        <div class="header">
+            <h1>RBAC Application Components Documentation</h1>
+            <p>RBAC Application Documentation</p>
+        </div>
+        
+        <p><h1>RBAC Application Components Documentation</h1></p><p><h2>Frontend Components</h2></p><p><h3>1. ProtectedRoute Component</h3></p><p><strong>File</strong>: <code>frontend/src/components/ProtectedRoute.js</code></p><p><strong>Purpose</strong>: Provides route-level protection based on authentication status and user permissions.</p><p><strong>Props</strong>:<br>- <code>children</code> (ReactNode): The component to render if access is granted<br>- <code>requiredPermission</code> (string, optional): Single permission required to access the route<br>- <code>requiredPermissions</code> (array, optional): Multiple permissions (user needs any one)<br>- <code>requiredRole</code> (string, optional): Single role required to access the route<br>- <code>requiredRoles</code> (array, optional): Multiple roles (user needs any one)<br>- <code>fallback</code> (string, default: '/login'): Route to redirect to if not authenticated</p><p><strong>Functionality</strong>:<br><ul><li>Checks if user is authenticated</li><br><li>Validates required permissions using permission utility functions</li><br><li>Validates required roles using role utility functions</li><br><li>Redirects to appropriate page based on validation results</li></p><p><strong>Dependencies</strong>:<br>- React Router (Navigate, useLocation)<br>- Redux (useSelector)<br>- Permission utilities (hasPermission, hasAnyPermission, hasRole, hasAnyRole)</p><p><strong>Usage Example</strong>:<br><pre><code>jsx<br><ProtectedRoute requiredPermission="user:read"><br>  <UserManagement /><br></ProtectedRoute><br></code></pre></p><p>---</p><p><h3>2. Layout Component</h3></p><p><strong>File</strong>: <code>frontend/src/components/Layout.js</code></p><p><strong>Purpose</strong>: Provides common layout structure for authenticated pages including navigation and sidebar.</p><p><strong>Features</strong>:<br>- Responsive navigation bar<br>- Sidebar with role-based menu items<br>- User information display<br>- Logout functionality<br>- Mobile-responsive design</p><p><strong>State Management</strong>:<br>- Uses Redux to access user authentication state<br>- Displays user information and role<br>- Manages navigation state</p><p><strong>Responsive Design</strong>:<br>- Mobile-first approach<br>- Collapsible sidebar for mobile devices<br>- Touch-friendly navigation</p><p>---</p><p><h3>3. PermissionGate Component</h3></p><p><strong>File</strong>: <code>frontend/src/components/PermissionGate.js</code></p><p><strong>Purpose</strong>: Conditionally renders content based on user permissions.</p><p><strong>Props</strong>:<br>- <code>permission</code> (string): Required permission<br>- <code>permissions</code> (array): Multiple permissions (user needs any one)<br>- <code>role</code> (string): Required role<br>- <code>roles</code> (array): Multiple roles (user needs any one)<br>- <code>children</code> (ReactNode): Content to render if permission is granted<br>- <code>fallback</code> (ReactNode, optional): Content to render if permission is denied</p><p><strong>Functionality</strong>:<br><li>Checks user permissions/roles</li><br><li>Renders children if permission is granted</li><br><li>Renders fallback content if permission is denied</li><br><li>Returns null if no fallback is provided</li></ul></p><p><strong>Usage Example</strong>:<br><pre><code>jsx<br><PermissionGate permission="user:write"><br>  <button>Edit User</button><br></PermissionGate><br></code></pre></p><p>---</p><p><h2>Page Components</h2></p><p><h3>1. Login Component</h3></p><p><strong>File</strong>: <code>frontend/src/pages/Login.js</code></p><p><strong>Purpose</strong>: Handles user authentication with email and password.</p><p><strong>Features</strong>:<br>- Email and password input fields<br>- Form validation<br>- Loading states during authentication<br>- Error message display<br>- Demo account information<br>- Automatic redirect after successful login</p><p><strong>State Management</strong>:<br>- Local state for form data<br>- Redux state for authentication status<br>- Automatic navigation on successful login</p><p><strong>Form Validation</strong>:<br>- Required field validation<br>- Email format validation<br>- Password requirements</p><p><strong>Demo Accounts Display</strong>:<br>- Shows available demo accounts<br>- Includes credentials for testing</p><p>---</p><p><h3>2. Dashboard Component</h3></p><p><strong>File</strong>: <code>frontend/src/pages/Dashboard.js</code></p><p><strong>Purpose</strong>: Main dashboard displaying user statistics and system overview.</p><p><strong>Features</strong>:<br>- User statistics cards<br>- Role-based content display<br>- Recent activity feed<br>- Quick action buttons<br>- Responsive grid layout</p><p><strong>Data Display</strong>:<br>- Total users count<br>- Total roles count<br>- User role distribution<br>- Recent user registrations</p><p><strong>Permission-based Content</strong>:<br>- Different content based on user role<br>- Admin-specific statistics<br>- Role-based quick actions</p><p>---</p><p><h3>3. UserManagement Component</h3></p><p><strong>File</strong>: <code>frontend/src/pages/UserManagement.js</code></p><p><strong>Purpose</strong>: Comprehensive user management interface with CRUD operations.</p><p><strong>Features</strong>:<br>- User list with search and filtering<br>- Create new user form<br>- Edit user functionality<br>- Delete user with confirmation<br>- Role assignment<br>- User status management</p><p><strong>CRUD Operations</strong>:<br>- <strong>Create</strong>: Add new users with role assignment<br>- <strong>Read</strong>: Display users with pagination and search<br>- <strong>Update</strong>: Edit user information and roles<br>- <strong>Delete</strong>: Remove users with confirmation dialog</p><p><strong>Form Features</strong>:<br>- Input validation<br>- Role selection dropdown<br>- Password generation<br>- Status toggle</p><p><strong>Data Management</strong>:<br>- Real-time updates<br>- Optimistic UI updates<br>- Error handling and rollback</p><p>---</p><p><h3>4. RoleManagement Component</h3></p><p><strong>File</strong>: <code>frontend/src/pages/RoleManagement.js</code></p><p><strong>Purpose</strong>: Role and permission management interface.</p><p><strong>Features</strong>:<br>- Role list with permissions<br>- Create new roles<br>- Edit role permissions<br>- Delete roles<br>- Permission matrix display</p><p><strong>Permission Management</strong>:<br>- Checkbox-based permission assignment<br>- Permission categories<br>- Bulk permission operations<br>- Permission validation</p><p><strong>Role Operations</strong>:<br>- Create roles with custom permissions<br>- Edit existing role permissions<br>- Delete unused roles<br>- Role usage statistics</p><p>---</p><p><h3>5. AdminPanel Component</h3></p><p><strong>File</strong>: <code>frontend/src/pages/AdminPanel.js</code></p><p><strong>Purpose</strong>: Administrative interface for system management.</p><p><strong>Features</strong>:<br>- System statistics<br>- User management tools<br>- Role management tools<br>- System configuration<br>- Audit logs</p><p><strong>Admin Functions</strong>:<br>- Bulk user operations<br>- System health monitoring<br>- Configuration management<br>- Data export/import</p><p>---</p><p><h3>6. Unauthorized Component</h3></p><p><strong>File</strong>: <code>frontend/src/pages/Unauthorized.js</code></p><p><strong>Purpose</strong>: Displays access denied message for unauthorized users.</p><p><strong>Features</strong>:<br>- Clear error message<br>- Navigation back to dashboard<br>- Contact information<br>- Helpful suggestions</p><p>---</p><p><h2>Backend Components</h2></p><p><h3>1. Server Entry Point</h3></p><p><strong>File</strong>: <code>backend/src/index.js</code></p><p><strong>Purpose</strong>: Main server configuration and startup.</p><p><strong>Features</strong>:<br>- Express application setup<br>- Middleware configuration<br>- Route registration<br>- Error handling<br>- Security configuration</p><p><strong>Middleware Stack</strong>:<br>- Helmet for security headers<br>- CORS configuration<br>- Rate limiting<br>- Body parsing<br>- Authentication middleware</p><p><strong>Security Features</strong>:<br>- JWT token validation<br>- Rate limiting<br>- CORS protection<br>- Security headers</p><p>---</p><p><h3>2. Database Configuration</h3></p><p><strong>File</strong>: <code>backend/src/config/database.js</code></p><p><strong>Purpose</strong>: MongoDB connection management.</p><p><strong>Features</strong>:<br>- Connection establishment<br>- Connection error handling<br>- Connection status monitoring<br>- Environment-based configuration</p><p><strong>Configuration</strong>:<br>- MongoDB URI from environment variables<br>- Connection options<br>- Error handling<br>- Connection events</p><p>---</p><p><h3>3. Authentication Controller</h3></p><p><strong>File</strong>: <code>backend/src/controllers/authController.js</code></p><p><strong>Purpose</strong>: Handles authentication-related operations.</p><p><strong>Functions</strong>:<br>- <code>register</code>: User registration with role assignment<br>- <code>login</code>: User authentication with JWT token generation<br>- <code>getMe</code>: Get current user information<br>- <code>logout</code>: User logout (token invalidation)</p><p><strong>Security Features</strong>:<br>- Password hashing with bcrypt<br>- JWT token generation<br>- Input validation<br>- Error handling</p><p>---</p><p><h3>4. User Controller</h3></p><p><strong>File</strong>: <code>backend/src/controllers/userController.js</code></p><p><strong>Purpose</strong>: Handles user management operations.</p><p><strong>Functions</strong>:<br>- <code>getUsers</code>: Retrieve all users with pagination<br>- <code>getUser</code>: Get user by ID<br>- <code>createUser</code>: Create new user<br>- <code>updateUser</code>: Update user information<br>- <code>deleteUser</code>: Delete user</p><p><strong>Features</strong>:<br>- Pagination support<br>- Search functionality<br>- Role validation<br>- Permission checking</p><p>---</p><p><h3>5. Role Controller</h3></p><p><strong>File</strong>: <code>backend/src/controllers/roleController.js</code></p><p><strong>Purpose</strong>: Handles role management operations.</p><p><strong>Functions</strong>:<br>- <code>getRoles</code>: Retrieve all roles<br>- <code>getRole</code>: Get role by ID<br>- <code>createRole</code>: Create new role<br>- <code>updateRole</code>: Update role permissions<br>- <code>deleteRole</code>: Delete role</p><p><strong>Features</strong>:<br>- Permission management<br>- Role validation<br>- Usage tracking<br>- Conflict resolution</p><p>---</p><p><h3>6. Authentication Middleware</h3></p><p><strong>File</strong>: <code>backend/src/middleware/auth.js</code></p><p><strong>Purpose</strong>: JWT token validation middleware.</p><p><strong>Features</strong>:<br>- Token extraction from headers<br>- Token verification<br>- User information extraction<br>- Error handling</p><p><strong>Security</strong>:<br>- JWT signature verification<br>- Token expiration checking<br>- User existence validation</p><p>---</p><p><h3>7. Validation Middleware</h3></p><p><strong>File</strong>: <code>backend/src/middleware/validation.js</code></p><p><strong>Purpose</strong>: Input validation middleware.</p><p><strong>Features</strong>:<br>- Request body validation<br>- Parameter validation<br>- Custom validation rules<br>- Error message formatting</p><p><strong>Validation Rules</strong>:<br>- Email format validation<br>- Password strength validation<br>- Required field validation<br>- Data type validation</p><p>---</p><p><h2>Data Models</h2></p><p><h3>1. User Model</h3></p><p><strong>File</strong>: <code>backend/src/models/User.js</code></p><p><strong>Purpose</strong>: User data structure and methods.</p><p><strong>Schema Fields</strong>:<br>- <code>firstName</code>: User's first name<br>- <code>lastName</code>: User's last name<br>- <code>email</code>: User's email (unique)<br>- <code>password</code>: Hashed password<br>- <code>role</code>: Reference to Role model<br>- <code>isActive</code>: User status<br>- <code>lastLogin</code>: Last login timestamp</p><p><strong>Methods</strong>:<br>- <code>comparePassword</code>: Password comparison<br>- <code>fullName</code>: Virtual field for full name</p><p><strong>Hooks</strong>:<br>- Pre-save hook for password hashing<br>- Index creation for performance</p><p>---</p><p><h3>2. Role Model</h3></p><p><strong>File</strong>: <code>backend/src/models/Role.js</code></p><p><strong>Purpose</strong>: Role data structure and methods.</p><p><strong>Schema Fields</strong>:<br>- <code>name</code>: Role name (unique)<br>- <code>description</code>: Role description<br>- <code>permissions</code>: Array of permissions<br>- <code>isActive</code>: Role status</p><p><strong>Features</strong>:<br>- Permission array management<br>- Role validation<br>- Index creation for performance</p><p>---</p><p><h2>Utility Functions</h2></p><p><h3>1. JWT Utilities</h3></p><p><strong>File</strong>: <code>backend/src/utils/jwt.js</code></p><p><strong>Purpose</strong>: JWT token generation and verification.</p><p><strong>Functions</strong>:<br>- <code>generateToken</code>: Create JWT access token<br>- <code>generateRefreshToken</code>: Create JWT refresh token<br>- <code>verifyToken</code>: Verify JWT token</p><p><strong>Configuration</strong>:<br>- Token expiration times<br>- Secret key management<br>- Token payload structure</p><p>---</p><p><h3>2. Permission Utilities</h3></p><p><strong>File</strong>: <code>frontend/src/utils/permissions.js</code></p><p><strong>Purpose</strong>: Permission checking utilities.</p><p><strong>Functions</strong>:<br>- <code>hasPermission</code>: Check single permission<br>- <code>hasAnyPermission</code>: Check multiple permissions<br>- <code>hasRole</code>: Check single role<br>- <code>hasAnyRole</code>: Check multiple roles</p><p><strong>Features</strong>:<br>- Role-based permission checking<br>- Permission inheritance<br>- Flexible permission matching</p><p>---</p><p><h3>3. Database Seeding</h3></p><p><strong>File</strong>: <code>backend/src/utils/seed.js</code></p><p><strong>Purpose</strong>: Database initialization with demo data.</p><p><strong>Features</strong>:<br>- Role creation with permissions<br>- User creation with roles<br>- Data cleanup before seeding<br>- Demo account generation</p><p><strong>Demo Data</strong>:<br>- Admin role with full permissions<br>- Editor role with limited permissions<br>- Viewer role with read-only permissions<br>- Manager role with user management permissions</p><p>---</p><p><h2>Service Layer</h2></p><p><h3>1. API Service</h3></p><p><strong>File</strong>: <code>frontend/src/services/api.js</code></p><p><strong>Purpose</strong>: HTTP client configuration and interceptors.</p><p><strong>Features</strong>:<br>- Axios instance configuration<br>- Request/response interceptors<br>- Token management<br>- Error handling</p><p><strong>Interceptors</strong>:<br>- Request interceptor for token attachment<br>- Response interceptor for error handling<br>- Automatic token refresh</p><p>---</p><p><h3>2. Authentication Service</h3></p><p><strong>File</strong>: <code>frontend/src/services/authService.js</code></p><p><strong>Purpose</strong>: Authentication-related API calls.</p><p><strong>Functions</strong>:<br>- <code>login</code>: User login<br>- <code>register</code>: User registration<br>- <code>getMe</code>: Get current user<br>- <code>logout</code>: User logout</p><p>---</p><p><h3>3. User Service</h3></p><p><strong>File</strong>: <code>frontend/src/services/userService.js</code></p><p><strong>Purpose</strong>: User management API calls.</p><p><strong>Functions</strong>:<br>- <code>getUsers</code>: Get all users<br>- <code>getUser</code>: Get user by ID<br>- <code>createUser</code>: Create user<br>- <code>updateUser</code>: Update user<br>- <code>deleteUser</code>: Delete user</p><p>---</p><p><h3>4. Role Service</h3></p><p><strong>File</strong>: <code>frontend/src/services/roleService.js</code></p><p><strong>Purpose</strong>: Role management API calls.</p><p><strong>Functions</strong>:<br>- <code>getRoles</code>: Get all roles<br>- <code>getRole</code>: Get role by ID<br>- <code>createRole</code>: Create role<br>- <code>updateRole</code>: Update role<br>- <code>deleteRole</code>: Delete role</p><p>---</p><p><h2>State Management</h2></p><p><h3>1. Redux Store</h3></p><p><strong>File</strong>: <code>frontend/src/store/index.js</code></p><p><strong>Purpose</strong>: Redux store configuration.</p><p><strong>Features</strong>:<br>- Store creation with Redux Toolkit<br>- Reducer combination<br>- Middleware configuration<br>- DevTools integration</p><p>---</p><p><h3>2. Authentication Slice</h3></p><p><strong>File</strong>: <code>frontend/src/store/slices/authSlice.js</code></p><p><strong>Purpose</strong>: Authentication state management.</p><p><strong>State</strong>:<br>- User information<br>- Authentication status<br>- Tokens<br>- Loading states<br>- Error messages</p><p><strong>Actions</strong>:<br>- <code>login</code>: User login<br>- <code>register</code>: User registration<br>- <code>getMe</code>: Get current user<br>- <code>logout</code>: User logout<br>- <code>clearError</code>: Clear error messages</p><p>---</p><p><h3>3. User Slice</h3></p><p><strong>File</strong>: <code>frontend/src/store/slices/userSlice.js</code></p><p><strong>Purpose</strong>: User management state.</p><p><strong>State</strong>:<br>- Users list<br>- Selected user<br>- Loading states<br>- Error messages</p><p><strong>Actions</strong>:<br>- <code>getUsers</code>: Fetch users<br>- <code>createUser</code>: Create user<br>- <code>updateUser</code>: Update user<br>- <code>deleteUser</code>: Delete user</p><p>---</p><p><h3>4. Role Slice</h3></p><p><strong>File</strong>: <code>frontend/src/store/slices/roleSlice.js</code></p><p><strong>Purpose</strong>: Role management state.</p><p><strong>State</strong>:<br>- Roles list<br>- Selected role<br>- Loading states<br>- Error messages</p><p><strong>Actions</strong>:<br>- <code>getRoles</code>: Fetch roles<br>- <code>createRole</code>: Create role<br>- <code>updateRole</code>: Update role<br>- <code>deleteRole</code>: Delete role</p><p>This comprehensive component documentation provides detailed information about each component, its purpose, functionality, and usage within the RBAC application.<br></p>
+    </div>
+</body>
+</html>
